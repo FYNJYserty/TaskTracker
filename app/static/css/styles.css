@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  background-color: cornflowerblue;
+}
+
+.navbar {
+    width: 100%;
+    background-color: #1678e7;
+    overflow: auto;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+  /* Navigation links */
+.navbar a {
+    float: left;
+    padding: 12px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 17px;
+    width: 25%;
+    text-align: center;
+    border-radius: 25px;
+}
+
+  /* Add a background color on mouse-over */
+.navbar a:hover {
+    background-color: #5700fa;
+}
+
+  /* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 500px) {
+.navbar a {
+    float: none;
+    display: block;
+    width: 100%;
+    text-align: left; /* If you want the text to be left-aligned on small screens */
+    }
+}
