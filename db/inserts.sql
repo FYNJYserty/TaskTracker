@@ -2,10 +2,10 @@
 
 -- Вставка данных в таблицу пользователей
 INSERT INTO user_tt (username, usr_password, first_name, age) VALUES
-('john_doe', 'password123', 'John', 30),
-('jane_smith', 'securepass', 'Jane', 28),
-('alice_jones', 'mypassword', 'Alice', 35),
-('bob_brown', 'pass456', 'Bob', 40);
+('john_doe', 'scrypt:32768:8:1$sysGyCDxaKVt23Lr$7a8fd6ea7c99ff9d9cf98333555ef20ce189861e1dbc16b7be7732cbd86cd79cbf331441a7d25888c5ff411ba537d7955e00b5b3a16db09a13d039f7c96f3a00', 'John', 30),
+('jane_smith', 'scrypt:32768:8:1$EGK0IKvaBHLMOYBY$1954f53642958fb75f5f988edd603b236be08e61ff881b7a6536d80a94077bcbc01b36584bdbaaaffa6308171c0a5ab6936f3c2866e9a2b14be9c9b1bcf9ebe1', 'Jane', 28),
+('alice_jones', 'scrypt:32768:8:1$33p6oFRxfVe4Bepw$5d5ce9649ddd940d30fa713bcfb1b113e351ae855d0d8577fe536c39aec9691bec7b770b365a63afa5d61accabb22d44e749cd6eeedb169ebfb1c684faa6c99e', 'Alice', 35),
+('bob_brown', 'scrypt:32768:8:1$kQT9xrAm0WRR9K9m$8da096cf430aa2537c76cb88c3069162724e614593103aa07b891a7bcba2b2907020d892775cae75914111951fbd3d9b8c49a3103e5150b19ef0e37afb6cb266', 'Bob', 40);
 
 -- Вставка данных в таблицу организаций
 INSERT INTO organization (org_id, org_name, org_password, description) VALUES
