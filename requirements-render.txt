@@ -17,7 +17,6 @@ numpy==1.26.4
 pandas==2.2.2
 psycopg==3.2.3
 psycopg-binary==3.2.3
-pygame==2.0.1
 pylint==2.7.4
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
