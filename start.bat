@@ -1,1 +1,1 @@
-python -m flask --app myproject:app run --debug
+python -m flask --app myproject:app run
