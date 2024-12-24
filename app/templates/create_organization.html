@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block content %}
+    <h2>{{ title }}</h2>
+    <div class="mb-3">
+        <a href="{{ url_for('create_organization') }}" class="btn btn-primary">Создать организацию</a>
+        <a href="{{ url_for('enter_organization') }}" class="btn btn-secondary">Вступить в организацию</a>
+        <a href="{{ url_for('view_organization') }}" class="btn btn-secondary">Список организаций</a>
+    </div>
+    {{ render_form(form, method="POST", action="") }}
+{% endblock %}

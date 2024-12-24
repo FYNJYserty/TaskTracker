@@ -1,0 +1,7 @@
+flask
+python-dotenv
+psycopg
+psycopg-binary
+bootstrap-flask
+WTForms Flask-WTF
+flask-login

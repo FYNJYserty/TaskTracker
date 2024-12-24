@@ -5,11 +5,10 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 app.config.from_object(Config)
-
+# Подключение Bootstrap5
 bootstrap = Bootstrap5(app)
-login_manager = LoginManager()
-login_manager.init_app(app)
-
+# Инициализация менеджера логина
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'
+# Импорт маршрутов
 from app import routes
-# Поверка работоспособности базы данных
-routes.test_connection()

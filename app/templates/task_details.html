@@ -1,0 +1,55 @@
+{% extends "index.html" %}
+
+{% block title %}Детали задачи{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Детали задачи: {{ task[2] }}</h1>  <!-- Название задачи -->
+    <p><strong>Описание:</strong> {{ task[3] }}</p>  <!-- Описание задачи -->
+    <p><strong>Срок выполнения:</strong> {{ task[4] }}</p>  <!-- Срок выполнения -->
+    <p><strong>Статус:</strong> {{ 'Выполнено' if task[5] else 'Не выполнено' }}</p>  <!-- Статус задачи -->
+    <p><strong>ID проекта:</strong> {{ task[6] }}</p>  <!-- ID проекта -->
+
+    <form action="{{ url_for('update_task_status', task_id=task[0]) }}" method="POST" class="mb-4">
+        <button type="submit" class="btn btn-success" {% if task[5] %}disabled{% endif %}>Отметить как выполнено</button>
+    </form>
+
+    <h2>Комментарии</h2>
+    <ul class="list-group mb-4">
+        {% for comment in comments %}
+            <li class="list-group-item">
+                <strong>{{ comment[1] }}</strong> - {{ comment[4] }}  <!-- Имя пользователя и текст комментария -->
+                <em class="text-muted">{{ comment[3] }}</em>  <!-- Дата комментария -->
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Добавить комментарий</h2>
+    <form action="{{ url_for('add_comment', task_id=task[0]) }}" method="POST">
+        <div class="mb-3">
+            <label for="comment" class="form-label">Комментарий</label>
+            <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить комментарий</button>
+    </form>
+
+    <h2>Вложения</h2>
+    <ul class="list-group mb-4">
+        {% for attachment in attachments %}
+            <li class="list-group-item">
+                <a href="{{ url_for('download_attachment', attachment_id=attachment[0]) }}">{{ attachment[5] }}</a>  <!-- Имя файла -->
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Добавить вложение</h2>
+    <form action="{{ url_for('add_attachment', task_id=task[0]) }}" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <input type="file" class="form-control" id="file" name="file" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить вложение</button>
+    </form>
+
+    <a href="{{ url_for('view_tasks') }}" class="btn btn-secondary mt-4">Назад к списку задач</a>
+</div>
+{% endblock %}

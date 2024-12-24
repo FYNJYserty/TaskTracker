@@ -1,0 +1,52 @@
+{% extends "index.html" %}
+
+{% block title %}Детали организации {{ org_id }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">{{ title }}</h2>
+    <form method="POST" class="mb-4">
+        {{ form.hidden_tag() }}
+        
+        <div class="form-group">
+            {{ form.name.label(class="form-label") }}
+            {{ form.name(class="form-control", size=32) }}
+        </div>
+        <div class="form-group">
+            {{ form.password.label(class="form-label") }}
+            {{ form.password(class="form-control", size=32) }}
+        </div>
+        <div class="form-group">
+            {{ form.description.label(class="form-label") }}
+            {{ form.description(class="form-control", size=32) }}
+        </div>
+        <div class="form-group mt-3">
+            <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+        </div>
+    </form>
+
+    <h3 class="mt-4">Участники:</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Логин пользователя</th>
+                <th>Статус в организации</th>
+                <th>Удалить</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in members %}
+            <tr>
+                <td>{{ member.username }}</td>
+                <td>{{ member.usr_position }}</td>
+                <td>
+                    <form action="{{ url_for('delete_user', org_id=org_id, username=member.username) }}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить этого пользователя?');">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

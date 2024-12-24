@@ -1,4 +1,32 @@
-{% extends "base.html" %}
+{% from 'bootstrap5/nav.html' import render_nav_item %}
+{% from 'bootstrap5/utils.html' import render_messages %}
 
-{% block content %}
-{% endblock %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    {% block styles %}
+        {{ bootstrap.load_css() }}
+    {% endblock %}
+    <title>{% block title %}Task Tracker{% endblock %}</title>
+</head>
+<body>
+    
+    <div class="navbar">
+        <a href="{{ url_for('create_organization') }}">Организации</a>
+        <a href="{{ url_for('create_project') }}">Создать проект</a>
+        <a href="{{ url_for('create_task') }}">Создать задачу</a>
+        <a href="{{ url_for('view_tasks') }}">Задачи</a>
+        <a href="{{ url_for('info') }}">Назад</a>
+    </div>
+    <main>
+        {{ render_messages() }}
+        {% block content%}{% endblock %}
+        {% block scripts %}
+            {{ bootstrap.load_js() }}
+        {% endblock %}
+    </main>
+</body>
+</html>
